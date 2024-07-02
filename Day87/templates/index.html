@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Cafes</h1>
+	<div id="sections"></div>
+	<div id="cafes">
+		<div class="row">
+			{% for cafe in cafes %}
+				<div class="card mb-3" style="max-width: 540px;margin-left: 10%;">
+				  <div class="row g-0">
+				    <div class="col-md-4">
+				      <img src="{{cafe.img_url}}" class="img-fluid rounded-start" alt="...">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 class="card-title">{{cafe.name}}</h5>
+				        <p class="card-text">This cafe is located at <a href="{{cafe.map_url}}">{{cafe.location}}</a><br>
+				        No. of Seats:{{cafe.seats}}<br>
+				        Sockets:{{choice[int(cafe.has_sockets)]}}<span> </span>
+				        Wifi:{{choice[int(cafe.has_wifi)]}}<span> </span>
+				        Toilet:{{choice[int(cafe.has_toilet)]}}<span> </span><br>
+				        Take Calls:{{choice[int(cafe.can_take_calls)]}}
+
+
+				        </p>
+				        <p class="card-text">Coffee Price : {{cafe.coffee_price}}</p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
